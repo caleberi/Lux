@@ -5,13 +5,9 @@ class Token {
     final TokenType type;
     final String lexeme;
     final Object literal;
-    final int line;
-
-    final int startOffset;
-
-
-
-    final int endOffset;
+    final Integer line;
+    final Integer startOffset;
+    final Integer endOffset;
 
     Token(TokenType type, String lexeme, Object literal, int line, int startOffset, int endOffset) {
         this.endOffset =  endOffset;
