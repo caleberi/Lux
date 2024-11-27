@@ -10,9 +10,30 @@ public class Scanner {
     private int start  = 0;
     private int current  = 0;
     private int line  =  1;
-    private final List<Token> tokens = new  ArrayList<Token>();
+    private final List<Token> tokens =   new  ArrayList<>();
 
     private static final Map<String,TokenType> keywords;
+
+    private interface Yielder {
+        int yield();
+
+        void reset();
+    }
+
+    private Yielder getIdx() {
+        return  new Yielder(){
+            int state = current;
+            @Override
+            public int yield() {
+                return state++;
+            }
+
+            @Override
+            public void reset() {
+                state = current;
+            }
+        };
+    }
 
     static  {
         keywords = new HashMap<>();
@@ -22,7 +43,7 @@ public class Scanner {
         keywords.put("else",TokenType.ELSE);
         keywords.put("false",TokenType.FALSE);
         keywords.put("for",TokenType.FOR);
-        keywords.put("ft",TokenType.FUN);
+        keywords.put("fx",TokenType.FUN);
         keywords.put("if",TokenType.IF);
         keywords.put("nil",TokenType.NIL);
         keywords.put("print",TokenType.PRINT);
@@ -38,6 +59,9 @@ public class Scanner {
         this.source =  source;
     }
 
+    /* `scanTokens` consume each character till EOF
+    * creating a token on discovery and ending it with EOF token
+    */
     List<Token> scanTokens() {
         while (!this.isAtEnd()){
             start = current;
@@ -65,10 +89,17 @@ public class Scanner {
             case '+' -> addToken(TokenType.PLUS);
             case ';' -> addToken(TokenType.SEMICOLON);
             case '*' -> addToken(TokenType.STAR);
+            case '%' -> addToken(TokenType.MODULUS);
             case '!' -> addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
             case '=' -> addToken(match( '=' )? TokenType.EQUAL_EQUAL : TokenType.EQUAL);
             case '<' -> addToken(match('=') ? TokenType.GREATER_EQUAL : TokenType.GREATER);
             case '>' -> addToken(match('=') ? TokenType.LESS_EQUAL : TokenType.LESS);
+            case '?' -> {
+                while (lookAhead() != ':' && !isAtEnd()) {}
+                if (isAtEnd())  { Lox.error(line, "Unexpected character.");}
+                addToken(TokenType.QUESTION);
+            }
+            case ':' -> addToken(TokenType.COLON);
             case '/' -> {
                 if(match('/')) {
                     while (peek() != '\n' && !isAtEnd()) advance();
@@ -99,6 +130,7 @@ public class Scanner {
         }
     }
 
+    // consumes an identifier 
     private void identifier() {
         while(isAlphanumeric(peek())) advance();
         String text = source.substring(start,current);
@@ -107,24 +139,35 @@ public class Scanner {
         addToken(type);
     }
 
+    // assert if a char is alphanumeric
     private boolean isAlphanumeric(char c) {
         return isDigit(c) || isAlpha(c);
     }
 
+    // assert if a char is alphabetic
     private boolean isAlpha(char c) {
         return  (c >= 'A'&& c <= 'Z') || (c >= 'a'&& c <= 'z') || (c=='_');
     }
 
+    // check the current character
     private char peek() {
         if (isAtEnd()) return '\0';
         return source.charAt(current);
     }
-
+    
+    // moves the offset of the source by one
     private char advance() {
         current++;
         return  source.charAt(current-1); // picking the character at one step back
     }
 
+    // perform a character lookahead 
+    private  char lookAhead(){
+        if (isAtEnd()) return '\0';
+        return  source.charAt(getIdx().yield());
+    }
+
+    // matchchecks if current char is equal to the expected and advance if true.
     private boolean match(char expected) {
         if (isAtEnd()) return  false;
         if (source.charAt(current) != expected) return false;
@@ -132,15 +175,16 @@ public class Scanner {
         return true;
     }
 
-    private void addToken(TokenType type){
-        addToken(type,null);
-    }
-
     private void addToken(TokenType type, Object literal) {
         String text =  source.substring(start, current);
         tokens.add(new Token(type,text,literal,line,start,start+text.length()));
     }
 
+    private void addToken(TokenType type){
+        addToken(type,null);
+    }
+
+    // consumes a string
     private void string(){
         while(peek() != '"' && !isAtEnd()){
             if (peek() == '\n') line++;
@@ -158,17 +202,19 @@ public class Scanner {
         addToken(TokenType.STRING,value);
     }
 
+    // asserts if the character is a digit
     private boolean isDigit(char c){
         return  c >= '0' && c <= '9';
     }
 
+    // consumes a number 
     private void number() {
         while (isDigit(peek())) advance();
         if (peek() == '.' && isDigit(peekNext())) {
             advance(); // consume the "." (decimal point)
             while(isDigit(peek())) advance();
         }
-        addToken(TokenType.NUMBER, Double.parseDouble(source.substring(start,current)));
+        addToken(TokenType.NUMBER, Double.valueOf(source.substring(start,current)));
     }
 
 
@@ -177,3 +223,5 @@ public class Scanner {
         return source.charAt(current+1);
     }
 }
+
+

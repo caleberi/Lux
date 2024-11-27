@@ -23,10 +23,18 @@ public class AstPrinter implements  Expr.Visitor<String> {
     }
 
     @Override
+    public String visitVariableExpr(Expr.Variable expr) {
+        return expr.name.lexeme;
+    }
+
+    @Override
+    public String visitAssignExpr(Expr.Assign expr) {
+        return parenthesize("assign",expr);
+    }
+
+    @Override
     public String visitTernaryExpr(Expr.Ternary expr) {
-        return parenthesize(
-                expr.question_mark.lexeme + expr.colon_operator.lexeme ,
-                expr.expression,expr.truth_side,expr.false_side);
+        return parenthesize(expr.question_mark.lexeme+expr.colon_operator, expr.expression,expr.truth_side,expr.false_side);
     }
 
     String print(Expr expr) {
