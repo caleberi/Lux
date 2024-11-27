@@ -3,15 +3,20 @@ package com.interpreters.lox;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.List;
-import java.nio.file.Files;
 import java.io.InputStreamReader;
-import java.nio.file.Paths;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
 
 
 public class Lox {
+
+    private static final Interpreter interpreter = new Interpreter();
     static   Boolean hasError = false;
+    static  Boolean hasRuntimeError = false;
+
     public static void main(String[] args) throws  IOException{
         if (args.length > 1) {
             System.out.println("Usage: jlox [script]");
@@ -51,16 +56,31 @@ public class Lox {
             System.out.println(token);
         }
 
+        Parser parser =  new Parser(tokens);
+        List<Stmt> statements = parser.parse();
+
+        if (hasError) System.exit(65);
+        if (hasRuntimeError) System.exit(79);
+        interpreter.interpret(statements);
     }
 
     // ERROR HANDLING
     private static void report(int line,String where,String message) {
-        System.err.println("[line "+line+"]: Error"+where + ":"+ message);
+        System.err.println("[line "+line+"]: Error: "+where + ":"+ message);
         hasError = true;
     }
 
     static void error(int  line, String message ){
-        report(line,"",message);
+        report(line," ",message);
+    }
+
+    public static void runtimeError(RuntimeError error) {
+        System.out.println(
+                error.getMessage() +
+                        "\nline["+error.token.line.toString() + "]\n[start:"+
+                        error.token.startOffset.toString() +
+                        "- end:" +error.token.endOffset.toString()+ "]\n");
+        hasError = true;
     }
 }
 
