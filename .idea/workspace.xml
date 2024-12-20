@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ea3101c-92db-4dc6-897e-47ae8399588d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Environment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/RuntimeError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Stmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/tool/GenerateAst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/LoxCallable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/LoxFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Return.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/AstPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/TokenType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/tool/Expr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Stmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +27,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -71,8 +66,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;
   }
 }</component>
   <component name="RunManager" selected="Application.GenerateAst">
@@ -105,13 +101,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.interpreters.lox.Lox" />
+      <module name="building_interpreters" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.interpreters.lox.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.AstPrinter" />
+      <item itemvalue="Application.Lox" />
       <item itemvalue="Application.GenerateAst" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GenerateAst" />
+        <item itemvalue="Application.Lox" />
       </list>
     </recent_temporary>
   </component>
@@ -126,7 +137,22 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
