@@ -59,10 +59,6 @@ public class AstPrinter implements  Expr.Visitor<String> {
         return parenthesize(expr.question_mark.lexeme+expr.colon_operator, expr.expression,expr.truth_side,expr.false_side);
     }
 
-    String print(Expr expr) {
-        return expr.accept(this);
-    }
-
     private String parenthesize(String name,Expr... exprs){
         StringBuilder builder = new StringBuilder();
         builder.append("(").append(name);
