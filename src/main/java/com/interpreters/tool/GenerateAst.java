@@ -21,8 +21,10 @@ public class GenerateAst {
     static {
         astMap.put("Expr", List.of(
             "Binary     : Expr left, Token operator, Expr right",
+            "Call       : Expr callee, Token paren, List<Expr> arguments",
             "Grouping   : Expr expression",
             "Literal    : Object value",
+            "Logical    : Expr left, Token operator, Expr right",
             "Unary      : Token operator, Expr right",
             "Ternary    : Expr expression, Token question_mark, Expr truth_side, Token colon_operator, Expr false_side",
             "Variable   : Token name",
@@ -33,7 +35,11 @@ public class GenerateAst {
             "Expression : Expr expression",
             "Print      : Expr expression",
             "Var        : Token name, Expr initializer",
-            "Block      : List<Stmt> statements"
+            "Block      : List<Stmt> statements",
+            "If         : Expr condition, Stmt thenBranch, Stmt elseBranch",
+            "While      : Expr condition, Stmt body",
+            "Function   : Token functionName, List<Token> parameters, List<Stmt> body",
+            "Return     : Token keyword, Expr value"
         ));
     }
 
@@ -132,8 +138,7 @@ public class GenerateAst {
         writer.println("    }");
     }
 
-    private static void defineVisitor(
-            PrintWriter writer, String baseName, List<String> types) {
+    private static void defineVisitor(PrintWriter writer, String baseName, List<String> types) {
         writer.println(" interface Visitor<R> {");
         for (String type : types) {
             String typeName = type.split(":")[0].trim();
