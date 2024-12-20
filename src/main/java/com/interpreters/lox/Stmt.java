@@ -11,6 +11,14 @@ abstract class Stmt {
     R visitVarStmt(Var stmt);
 
     R visitBlockStmt(Block stmt);
+
+    R visitIfStmt(If stmt);
+
+    R visitWhileStmt(While stmt);
+
+    R visitFunctionStmt(Function stmt);
+
+    R visitReturnStmt(Return stmt);
   }
 
   static class Expression extends Stmt {
@@ -64,6 +72,70 @@ abstract class Stmt {
     @Override
     <R> R accept(Visitor<R> visitor) {
       return visitor.visitBlockStmt(this);
+    }
+  }
+
+  static class If extends Stmt {
+    If(Expr condition, Stmt thenBranch, Stmt elseBranch) {
+      this.condition = condition;
+      this.thenBranch = thenBranch;
+      this.elseBranch = elseBranch;
+    }
+
+    final Expr condition;
+    final Stmt thenBranch;
+    final Stmt elseBranch;
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitIfStmt(this);
+    }
+  }
+
+  static class While extends Stmt {
+    While(Expr condition, Stmt body) {
+      this.condition = condition;
+      this.body = body;
+    }
+
+    final Expr condition;
+    final Stmt body;
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitWhileStmt(this);
+    }
+  }
+
+  static class Function extends Stmt {
+    Function(Token functionName, List<Token> parameters, List<Stmt> body) {
+      this.functionName = functionName;
+      this.parameters = parameters;
+      this.body = body;
+    }
+
+    final Token functionName;
+    final List<Token> parameters;
+    final List<Stmt> body;
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitFunctionStmt(this);
+    }
+  }
+
+  static class Return extends Stmt {
+    Return(Token keyword, Expr value) {
+      this.keyword = keyword;
+      this.value = value;
+    }
+
+    final Token keyword;
+    final Expr value;
+
+    @Override
+    <R> R accept(Visitor<R> visitor) {
+      return visitor.visitReturnStmt(this);
     }
   }
 
