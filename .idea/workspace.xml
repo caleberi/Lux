@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea3101c-92db-4dc6-897e-47ae8399588d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/LoxCallable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/LoxFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Return.java" afterDir="false" />
+    <list default="true" id="8ea3101c-92db-4dc6-897e-47ae8399588d" name="Changes" comment="Feat: add a semantic analyser">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/AstPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/lox/Stmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/interpreters/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/interpreters/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +127,105 @@
       <option name="presentableId" value="Default" />
       <updated>1728154051780</updated>
     </task>
+    <task id="LOCAL-00001" summary="Feat: add get,set and this expression visitor for AST printer">
+      <created>1735803496401</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1735803496401</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Feat: add environment dsa  for scope and closure management">
+      <created>1735804011214</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1735804011214</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Feat: add ast representation for get, set and this expression">
+      <created>1735804089642</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1735804089642</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feat: generate AST representation for get, set and this expression">
+      <created>1735804128784</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1735804128784</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Feat: add get,set and this expression">
+      <created>1735804278370</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1735804278370</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Feat: add get,set and class expression via ast generation">
+      <created>1735805211761</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1735805211761</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Feat: add local variable in interpreter">
+      <created>1735805360475</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1735805360475</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Feat: use primitive for total (sum native function)">
+      <created>1735805691773</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1735805691773</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Feat: use primitive for total (sum native function)">
+      <created>1735805784859</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1735805784859</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Feat: native class implementation for lox">
+      <created>1735805820414</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735805820414</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Feat: support function call , binding and constructor handling">
+      <created>1735805866149</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1735805866149</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Feat: native lox class instance representation">
+      <created>1735805904178</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1735805904178</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Feat: parser support for class, this, dot tokens and classDeclaration">
+      <created>1735806626945</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735806626945</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Feat: add a semantic analyser">
+      <created>1735806647709</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1735806647709</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +241,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Feat: add get,set and this expression visitor for AST printer" />
+    <MESSAGE value="Feat: include getAt environment and ancestor method" />
+    <MESSAGE value="Feat: add environment dsa  for scope and closure management" />
+    <MESSAGE value="Feat: add ast representation for get, set and this expression" />
+    <MESSAGE value="Feat: generate AST representation for get, set and this expression" />
+    <MESSAGE value="Feat: add get,set and this expression" />
+    <MESSAGE value="Feat: add get,set and class expression via ast generation" />
+    <MESSAGE value="Feat: add local variable in interpreter" />
+    <MESSAGE value="Feat: use primitive for total (sum native function)" />
+    <MESSAGE value="Feat: native class implementation for lox" />
+    <MESSAGE value="Feat: support function call , binding and constructor handling" />
+    <MESSAGE value="Feat: native lox class instance representation" />
+    <MESSAGE value="Feat: parser support for class, this, dot tokens and classDeclaration" />
+    <MESSAGE value="Feat: add a semantic analyser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: add a semantic analyser" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
