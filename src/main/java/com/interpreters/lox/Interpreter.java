@@ -50,7 +50,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
             @Override
             public Object call(Interpreter interpreter, List<Object> arguments) {
-                Double total = 0.0;
+                double total = 0.0;
                 for (Object a: arguments){
                     if (!(a instanceof Double)) throw  new RuntimeError(
                             null,String.format("Invalid argument (%s) provided to sum(..)",a.toString()
@@ -186,7 +186,8 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitFunctionStmt(Stmt.Function stmt) {
-        LoxFunction function = new LoxFunction(stmt,environment);
+        LoxFunction function = new LoxFunction(stmt, environment,
+                false);
         environment.define(stmt.functionName.lexeme,function);
         return null;
     }
