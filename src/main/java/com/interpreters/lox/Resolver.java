@@ -10,6 +10,7 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     private enum FunctionType {
         NONE,
         FUNCTION,
+        INITIALIZER,
         METHOD,
     }
 
@@ -234,6 +235,10 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
                     stmt.keyword.lexeme +" Can't return from top-level code.");
         }
         if (stmt.value != null) {
+            if (currentFunction == FunctionType.INITIALIZER) {
+                Lox.error(stmt.keyword.line,
+                stmt.keyword.lexeme + " Can't return a value from an initializer.");
+            }
             resolve(stmt.value);
         }
         return null;
@@ -252,6 +257,9 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
 
         for (Stmt.Function method : stmt.methods){
             FunctionType declaration = FunctionType.METHOD;
+            if (method.functionName.lexeme.equals("init")) {
+                declaration = FunctionType.INITIALIZER;
+            }
             resolveFunction(method,declaration);
         }
 
