@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GenerateAst {
-    private final static  Map<String,List>  astMap = new HashMap<>();
+    private final static  Map<String,List<String>>  astMap = new HashMap<>();
     private final static  Map<String,String>  outputFileName = new HashMap<>();
 
     static {
@@ -50,7 +50,7 @@ public class GenerateAst {
             System.exit(64);
         }
         String outputDir =  args[0];
-        for (Map.Entry<String, List> en : astMap.entrySet()) {
+        for (Map.Entry<String, List<String>> en : astMap.entrySet()) {
             String fileName = outputFileName.get(en.getKey());
             String generatedFilePath = outputDir + fileName;
             File outputFile = new File(generatedFilePath);
