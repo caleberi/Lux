@@ -23,6 +23,9 @@ public class GenerateAst {
             "Binary     : Expr left, Token operator, Expr right",
             "Call       : Expr callee, Token paren, List<Expr> arguments",
             "Grouping   : Expr expression",
+            "Get        : Expr object, Token name",
+            "Set        : Expr object, Token name, Expr value",
+            "This       : Token keyword",
             "Literal    : Object value",
             "Logical    : Expr left, Token operator, Expr right",
             "Unary      : Token operator, Expr right",
@@ -39,7 +42,8 @@ public class GenerateAst {
             "If         : Expr condition, Stmt thenBranch, Stmt elseBranch",
             "While      : Expr condition, Stmt body",
             "Function   : Token functionName, List<Token> parameters, List<Stmt> body",
-            "Return     : Token keyword, Expr value"
+            "Return     : Token keyword, Expr value",
+            "Class      : Token name, List<Stmt.Function> methods"
         ));
     }
 
