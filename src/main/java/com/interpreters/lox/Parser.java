@@ -38,12 +38,18 @@ public class Parser {
         Token name = consume(TokenType.IDENTIFIER,"Expect class name.");
         consume(TokenType.LEFT_BRACE, "Expect '{' before class body.");
 
+        Expr.Variable superclass = null;
+        if (match(TokenType.LESS)) {
+            consume(TokenType.IDENTIFIER, "Expected a superclass name.");
+            superclass = new Expr.Variable(previous());
+        }
+
         List<Stmt.Function> methods = new ArrayList<>();
         while (!check(TokenType.RIGHT_BRACE) && isNotAtEnd()) {
             methods.add(function("method"));
         }
         consume(TokenType.RIGHT_BRACE, "Expect '}' after class body.");
-        return new Stmt.Class(name, methods);
+        return new Stmt.Class(name, superclass,methods);
     }
 
 
