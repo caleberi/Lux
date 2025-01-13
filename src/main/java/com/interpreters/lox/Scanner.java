@@ -43,7 +43,7 @@ public class Scanner {
         keywords.put("else",TokenType.ELSE);
         keywords.put("false",TokenType.FALSE);
         keywords.put("for",TokenType.FOR);
-        keywords.put("fx",TokenType.FUN);
+        keywords.put("fun",TokenType.FUN);
         keywords.put("if",TokenType.IF);
         keywords.put("nil",TokenType.NIL);
         keywords.put("print",TokenType.PRINT);
